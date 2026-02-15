@@ -120,6 +120,9 @@ class AnalysisConfig:
         if self.smooth_frames < 3 or self.smooth_frames % 2 == 0:
             raise ValueError("smooth_frames must be odd and at least 3")
         
+        if self.acceleration_smooth_frames < 3 or self.acceleration_smooth_frames % 2 == 0:
+            raise ValueError("acceleration_smooth_frames must be odd and at least 3")
+        
         if self.smooth_order < 1 or self.smooth_order >= self.smooth_frames:
             raise ValueError("smooth_order must be between 1 and smooth_frames-1")
         
