@@ -256,13 +256,13 @@ def main():
     df = get_mouse_acceleration(df, smooth_frames=config.acceleration_smooth_frames, 
                                 smooth_order=config.smooth_order)
     df = get_contacts(df, config.contact_distance)
-    df = smooth_contacts(df, windowSize=config.window_size/2)
+    df = smooth_contacts(df, window_size=config.window_size/2)
     df = get_approaches(df, config.speed_threshold, 
                        diff_frames=config.diff_frames, 
                        diff_speed=config.diff_speed, 
                        frame_rate=config.frame_rate, 
                        body_azimuth=config.body_azimuth_threshold)
-    df = smooth_approaches(df, windowSize=config.window_size)
+    df = smooth_approaches(df, window_size=config.window_size)
     
     # No approach while contact
     df['approach'][df['contact'] == 1] = 0

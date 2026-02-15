@@ -332,12 +332,12 @@ def get_contacts(df, contact_distance = 4):
     return df
 
 
-def smooth_contacts(df, windowSize = 8):
+def smooth_contacts(df, window_size=8):
     
-    weights = np.repeat(1.0, windowSize) / windowSize
+    weights = np.repeat(1.0, window_size) / window_size
     yMA = np.convolve(np.squeeze(df['contact']), weights, 'same')
-    yMA[yMA >= 1/windowSize] = 1
-    yMA[yMA < 1/windowSize] = 0
+    yMA[yMA >= 1/window_size] = 1
+    yMA[yMA < 1/window_size] = 0
     time_in_contact_smooth = yMA
     
     df['contact'] = time_in_contact_smooth    
@@ -368,12 +368,12 @@ def test_dist_diff(df,diff_frames=8):
     return
 
 
-def smooth_approaches(df, windowSize = 8):
+def smooth_approaches(df, window_size=8):
     
-    weights = np.repeat(1.0, windowSize) / windowSize
+    weights = np.repeat(1.0, window_size) / window_size
     yMA = np.convolve(np.squeeze(df['approach']), weights, 'same')
-    yMA[yMA >= 1/windowSize] = 1
-    yMA[yMA < 1/windowSize] = 0
+    yMA[yMA >= 1/window_size] = 1
+    yMA[yMA < 1/window_size] = 0
     time_approaching_smooth = yMA
     
     df['approach'] = time_approaching_smooth    
